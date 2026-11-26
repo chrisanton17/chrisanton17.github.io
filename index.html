@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christina · AI Researcher</title>
+<meta name="description" content="Christina — Computer Engineering student at TEPAK, aspiring AI researcher working on LLM fine-tuning, evaluation and AI security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, precise, research-minded; a serious early-career researcher
+   IDEA: a research paper's first page: title, abstract, a method figure, sections
+   PICTURE: Figure 1, the thesis method: abstract → frozen 4-bit Gemma 3 1B + LoRA adapters → TL;DR
+   COLOUR and TYPE: white and near-black ink, one muted violet accent, soft lavender wash; Inter Tight + Inter
+   LAYOUT: hero with figure, then ruled sections: research focus, projects, skills, education, contact */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#121117);--alt:light-dark(#f6f4fb,#1a1822);--ink:light-dark(#17151f,#ecebf2);
+--soft:light-dark(#575366,#a9a5b8);--line:light-dark(#e6e3ee,#2c2938);--acc:light-dark(#5b45c9,#a596ff);
+--accbg:light-dark(#efebff,#262140);--fig:light-dark(#fbfaff,#17151f)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.4vw,34px)}
+h3{font-size:18px}
+.wrap{max-width:1120px;margin:0 auto}
+.band{padding:clamp(44px,6vw,84px) max(5vw,18px)}
+.band.alt{background:var(--alt)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;margin-bottom:30px;align-items:end}
+.head p{margin:0;color:var(--soft);max-width:60ch}
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;padding:10px max(5vw,18px);flex-wrap:wrap}
+.logo{font:700 18px "Inter Tight",sans-serif;text-decoration:none;margin-right:auto}
+nav .links{display:flex;gap:2px;flex-wrap:wrap}
+nav .links a{text-decoration:none;font-weight:500;font-size:15px;padding:11px 12px;border-radius:8px;color:var(--soft)}
+nav .links a:hover,nav .links a:focus-visible{color:var(--ink);background:var(--alt)}
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,64px);align-items:center}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--soft);margin-bottom:20px}
+.status i{width:8px;height:8px;border-radius:50%;background:#2fb67c;box-shadow:0 0 0 4px color-mix(in srgb,#2fb67c 20%,transparent)}
+.hero h1{font-size:clamp(38px,5.2vw,52px);margin-bottom:8px}
+.hero .role{font:600 clamp(18px,2vw,21px) "Inter Tight",sans-serif;color:var(--acc);margin:0 0 18px}
+.hero p.lead{font-size:17px;color:var(--soft);max-width:36em;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--bg);transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible,.clist a:focus-visible,.more:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{background:var(--acc);border-color:var(--acc)}
+.btn svg{width:18px;height:18px}
+figure{margin:0;background:var(--fig);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2.4vw,26px)}
+.fig{position:relative;aspect-ratio:520/360;width:100%}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+figcaption{font-size:14px;color:var(--soft);margin-top:12px;line-height:1.5}
+figcaption b{color:var(--ink)}
+.flow{stroke-dasharray:6 6;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}html{scroll-behavior:auto}}
+/* focus */
+.focus{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.focus div{padding:24px 24px 6px 0}
+.focus div+div{padding-left:24px;border-left:1px solid var(--line)}
+.focus .n{font:600 14px Inter,sans-serif;color:var(--acc);display:block;margin-bottom:8px}
+.focus p{margin:8px 0 0;color:var(--soft);font-size:15px}
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.card.feat{border-color:color-mix(in srgb,var(--acc) 45%,var(--line))}
+.meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:500;color:var(--soft)}
+.meta span{white-space:nowrap}
+.meta span+span::before{content:"·";margin-right:8px}
+.meta .live{color:var(--acc)}
+.card p{margin:0;color:var(--soft);font-size:15px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.stack span{font-size:13px;padding:3px 9px;border-radius:6px;background:var(--alt);color:var(--ink)}
+.more{font-weight:600;font-size:15px;color:var(--acc);text-decoration:none;align-self:flex-start;padding:4px 0}
+.more:hover{text-decoration:underline}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.skills>div{padding:18px 0;border-top:1px solid var(--line)}
+.skills h3{font-size:15px;margin-bottom:10px;color:var(--soft);font-weight:600;font-family:Inter,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 11px;border-radius:8px;font-size:14px;font-weight:500;background:var(--bg);border:1px solid var(--line)}
+.band.alt .chips span{background:var(--bg)}
+/* timeline */
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:10em minmax(0,1fr);gap:20px;padding:20px 0;border-top:1px solid var(--line)}
+.tl .when{font-size:15px;font-weight:600;color:var(--soft);white-space:nowrap}
+.tl b{display:block;font-size:17px;margin-bottom:2px}
+.tl span{color:var(--soft);font-size:15px}
+.course{margin-top:34px}
+.course h3{margin-bottom:6px}
+/* contact */
+.contact{background:var(--ink);color:var(--bg)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
+.contact p{margin:10px 0 0;max-width:40ch;opacity:.8}
+.clist{display:grid;gap:10px}
+.clist a{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:54px;padding:0 18px;border-radius:10px;border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);text-decoration:none;font-weight:600}
+.clist a:hover{background:color-mix(in srgb,var(--bg) 10%,transparent)}
+.clist small{opacity:.75;font-weight:500;overflow-wrap:anywhere;text-align:right}
+footer{text-align:center;padding:24px 16px;color:var(--soft);font-size:14px}
+@media(max-width:860px){.focus{grid-template-columns:minmax(0,1fr)}.focus div,.focus div+div{padding:20px 0 4px;border-left:0}.focus div+div{border-top:1px solid var(--line)}.grid,.skills,.head{grid-template-columns:minmax(0,1fr)}.head{gap:8px}}
+@media(max-width:720px){.hero .wrap,.contact .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav .links a{padding:11px 8px;font-size:14px}.tl li{grid-template-columns:minmax(0,1fr);gap:4px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#top">Christina</a>
+  <div class="links">
+    <a href="#research">Research</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="hero band" id="top"><div class="wrap">
+  <div>
+    <span class="status"><i></i>Open to AI research roles from 2027</span>
+    <h1>Christina</h1>
+    <p class="role">Aspiring AI Researcher · Computer Engineering, TEPAK</p>
+    <p class="lead">Final-year Computer Engineering student at the Cyprus University of Technology, graduating May 2027. I work on fine-tuning and evaluating large language models, with a background in systems, networks and security.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="https://github.com/YOUR-USERNAME"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5Z"/></svg>LinkedIn</a>
+    </div>
+  </div>
+  <figure>
+    <div class="fig" role="img" aria-label="Diagram: a paper abstract goes into Gemma 3 1B, whose 4-bit weights are frozen while small LoRA adapters are trained, producing a one-sentence TL;DR">
+      <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--acc)"/></marker></defs>
+        <!-- input -->
+        <rect x="8" y="104" width="118" height="152" rx="10" fill="var(--bg)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="22" y="130" font-size="13" font-weight="600" fill="var(--ink)">Paper</text>
+        <text x="22" y="147" font-size="11" fill="var(--soft)">abstract + intro</text>
+        <rect x="22" y="162" width="88" height="6" rx="3" fill="var(--line)"/><rect x="22" y="176" width="76" height="6" rx="3" fill="var(--line)"/><rect x="22" y="190" width="84" height="6" rx="3" fill="var(--line)"/><rect x="22" y="204" width="64" height="6" rx="3" fill="var(--line)"/><rect x="22" y="218" width="80" height="6" rx="3" fill="var(--line)"/><rect x="22" y="232" width="56" height="6" rx="3" fill="var(--line)"/>
+        <path class="flow" d="M130 180H160" stroke="var(--acc)" stroke-width="2" marker-end="url(#ar)" fill="none"/>
+        <!-- model -->
+        <rect x="166" y="40" width="200" height="280" rx="14" fill="var(--accbg)" stroke="color-mix(in srgb,var(--acc) 40%,transparent)" stroke-width="1.5"/>
+        <text x="266" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Gemma 3 1B</text>
+        <text x="266" y="86" text-anchor="middle" font-size="11" fill="var(--soft)">transformer layers</text>
+        <g>
+          <rect x="186" y="104" width="112" height="34" rx="6" fill="var(--bg)" stroke="var(--line)"/><text x="242" y="125" text-anchor="middle" font-size="11" fill="var(--soft)">frozen · 4-bit</text>
+          <rect x="306" y="104" width="44" height="34" rx="6" fill="var(--acc)"/><text x="328" y="125" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">LoRA</text>
+          <rect x="186" y="150" width="112" height="34" rx="6" fill="var(--bg)" stroke="var(--line)"/><text x="242" y="171" text-anchor="middle" font-size="11" fill="var(--soft)">frozen · 4-bit</text>
+          <rect x="306" y="150" width="44" height="34" rx="6" fill="var(--acc)"/><text x="328" y="171" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">LoRA</text>
+          <rect x="186" y="196" width="112" height="34" rx="6" fill="var(--bg)" stroke="var(--line)"/><text x="242" y="217" text-anchor="middle" font-size="11" fill="var(--soft)">frozen · 4-bit</text>
+          <rect x="306" y="196" width="44" height="34" rx="6" fill="var(--acc)"/><text x="328" y="217" text-anchor="middle" font-size="11" font-weight="600" fill="var(--bg)">LoRA</text>
+        </g>
+        <text x="266" y="262" text-anchor="middle" font-size="11" fill="var(--soft)">only the small adapters</text>
+        <text x="266" y="278" text-anchor="middle" font-size="11" fill="var(--soft)">are trained (QLoRA)</text>
+        <text x="266" y="304" text-anchor="middle" font-size="11" font-weight="600" fill="var(--acc)">Unsloth · Kaggle GPU</text>
+        <path class="flow" d="M370 180H400" stroke="var(--acc)" stroke-width="2" marker-end="url(#ar)" fill="none"/>
+        <!-- output -->
+        <rect x="406" y="138" width="106" height="84" rx="10" fill="var(--bg)" stroke="var(--acc)" stroke-width="1.5"/>
+        <text x="420" y="163" font-size="13" font-weight="700" fill="var(--acc)">TL;DR</text>
+        <text x="420" y="180" font-size="11" fill="var(--soft)">one-sentence</text>
+        <text x="420" y="195" font-size="11" fill="var(--soft)">summary</text>
+        <rect x="420" y="205" width="78" height="5" rx="2.5" fill="color-mix(in srgb,var(--acc) 35%,transparent)"/>
+      </svg>
+    </div>
+    <figcaption><b>Figure 1.</b> Thesis method: QLoRA fine-tuning of Gemma 3 1B on SciTLDR, comparing three input formats (AIC, EAP+AIC and Chat-Format).</figcaption>
+  </figure>
+</div></header>
+
+<section class="band alt" id="research"><div class="wrap">
+  <div class="head"><h2>Research focus</h2><p>My background spans software, hardware and security. I bring that to AI by building systems, measuring them carefully, and testing where they break.</p></div>
+  <div class="focus">
+    <div><span class="n">01 · Efficient fine-tuning</span><h3>Adapting small LLMs</h3><p>Parameter-efficient fine-tuning (QLoRA) so compact models like Gemma 3 1B can do specialised tasks on modest hardware.</p></div>
+    <div><span class="n">02 · Evaluation</span><h3>Measuring what matters</h3><p>Evaluating models and coding agents beyond a single headline score: how and why they fail.</p></div>
+    <div><span class="n">03 · AI security</span><h3>Attacking and defending AI</h3><p>Applying ethical hacking and cryptography experience to the security of AI systems.</p></div>
+  </div>
+</div></section>
+
+<section class="band" id="projects"><div class="wrap">
+  <div class="head"><h2>Projects</h2><p>Research, a production website for a real client, and security work.</p></div>
+  <div class="grid">
+    <article class="card feat">
+      <div class="meta"><span>Bachelor's thesis</span><span class="live">In progress</span></div>
+      <h3>Fine-tuning Gemma 3 1B for scientific TL;DR generation</h3>
+      <p>QLoRA fine-tuning of Gemma 3 1B to write one-sentence summaries of research papers (SciTLDR), comparing three input formats (AIC, EAP+AIC and Chat-Format) to find which trains the model best.</p>
+      <div class="stack"><span>Python</span><span>Unsloth</span><span>Hugging Face</span><span>QLoRA</span><span>Kaggle</span></div>
+      <a class="more" href="https://github.com/YOUR-USERNAME/gemma-scitldr-thesis">Repository →</a>
+    </article>
+    <article class="card feat">
+      <div class="meta"><span>Independent research</span><span class="live">In progress</span></div>
+      <h3>Evaluating coding agents on SWE-bench</h3>
+      <p>An evaluation pipeline that runs coding agents on real GitHub issues and analyses why they fail, not only how often they succeed.</p>
+      <div class="stack"><span>Python</span><span>SWE-bench</span><span>Docker</span><span>LLM agents</span></div>
+      <a class="more" href="https://github.com/YOUR-USERNAME/swe-bench-eval">Repository →</a>
+    </article>
+    <article class="card">
+      <div class="meta"><span>Team of 5</span><span>Real client</span></div>
+      <h3>Full-stack website for a client</h3>
+      <p>Designed, built and delivered a website for a real client with a five-person team. I worked on both the front end and the back end and communicated with the client on requirements.</p>
+      <div class="stack"><span>PHP</span><span>Node.js</span><span>MySQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+      <a class="more" href="https://github.com/YOUR-USERNAME/client-website">Repository →</a>
+    </article>
+    <article class="card">
+      <div class="meta"><span>Group project</span><span>Generative AI</span></div>
+      <h3>BPM-GenAI: process mining with LLMs</h3>
+      <p>Combined process mining with large language models to analyse an insurance-claims event log and explain how the process actually runs.</p>
+      <div class="stack"><span>Python</span><span>LLMs</span><span>Process mining</span></div>
+      <a class="more" href="https://github.com/YOUR-USERNAME/bpm-genai">Repository →</a>
+    </article>
+    <article class="card">
+      <div class="meta"><span>Group project</span><span>Security</span></div>
+      <h3>Vulnerable vs. secure web application</h3>
+      <p>Built a deliberately vulnerable web application and a hardened version, demonstrating common attacks and their defences.</p>
+      <div class="stack"><span>Web security</span><span>Cryptography</span></div>
+      <a class="more" href="https://github.com/YOUR-USERNAME/secure-vs-vulnerable-webapp">Repository →</a>
+    </article>
+    <article class="card">
+      <div class="meta"><span>Paper study</span><span>Deep learning</span></div>
+      <h3>Auto-Encoding Variational Bayes (VAE)</h3>
+      <p>Group summary and presentation of the original VAE paper, covering the reparameterisation trick and the evidence lower bound.</p>
+      <div class="stack"><span>Generative models</span><span>Presentation</span></div>
+    </article>
+  </div>
+</div></section>
+
+<section class="band alt" id="skills"><div class="wrap">
+  <div class="head"><h2>Skills</h2><p>From digital logic and Assembly up to language models.</p></div>
+  <div class="skills">
+    <div><h3>Programming languages</h3><div class="chips"><span>Python</span><span>C</span><span>C++</span><span>Java</span><span>JavaScript</span><span>PHP</span><span>SQL</span><span>Assembly</span><span>Verilog</span></div></div>
+    <div><h3>AI &amp; machine learning</h3><div class="chips"><span>LLM fine-tuning</span><span>LoRA / QLoRA</span><span>Unsloth</span><span>Hugging Face</span><span>Prompt design</span><span>Model evaluation</span></div></div>
+    <div><h3>Web development</h3><div class="chips"><span>HTML</span><span>CSS</span><span>Node.js</span><span>MySQL</span><span>Front end</span><span>Back end</span></div></div>
+    <div><h3>Systems &amp; security</h3><div class="chips"><span>Networking</span><span>Router configuration</span><span>Operating systems</span><span>Parallel programming</span><span>Cryptography</span><span>Ethical hacking</span></div></div>
+    <div><h3>Data</h3><div class="chips"><span>MySQL</span><span>Database design</span><span>SQL queries</span><span>Data structures</span></div></div>
+    <div><h3>Hardware</h3><div class="chips"><span>PC building</span><span>Component compatibility</span><span>3D printing</span><span>Digital logic</span></div></div>
+    <div><h3>Tools</h3><div class="chips"><span>Git</span><span>GitHub</span><span>Linux</span><span>Terminal / shell</span><span>MATLAB</span><span>Kaggle</span></div></div>
+    <div><h3>Professional</h3><div class="chips"><span>Client communication</span><span>Presentations</span><span>Leading project work</span><span>Teamwork</span></div></div>
+    <div><h3>Spoken languages</h3><div class="chips"><span>Greek</span><span>English</span><span>Italian</span><span>Moldovan (Romanian)</span><span>Chinese (beginner)</span></div></div>
+  </div>
+</div></section>
+
+<section class="band" id="education"><div class="wrap">
+  <div class="head"><h2>Education</h2><p>Degree, training and hands-on work.</p></div>
+  <ul class="tl">
+    <li><span class="when">2023 – 2027</span><div><b>B.Sc. Computer Engineering</b><span>Cyprus University of Technology (TEPAK), expected May 2027. Thesis: fine-tuning Gemma 3 1B for scientific TL;DR generation.</span></div></li>
+    <li><span class="when">Alongside degree</span><div><b>Ethical hacking course</b><span>Completed a full course in penetration testing and offensive security.</span></div></li>
+    <li><span class="when">Hands-on</span><div><b>PC building &amp; 3D printing</b><span>Built a PC from individual parts, checking compatibility of CPU, motherboard, RAM and power supply; hands-on 3D printing.</span></div></li>
+  </ul>
+  <div class="course">
+    <h3>Relevant coursework</h3>
+    <div class="skills" style="margin-top:14px">
+      <div><h3>AI &amp; data</h3><div class="chips"><span>Statistical Pattern Recognition &amp; Machine Learning</span><span>Deep Learning</span><span>Introduction to Data Science</span><span>Probability &amp; Random Processes</span><span>Linear Algebra</span><span>Bioinformatics</span></div></div>
+      <div><h3>Computer science</h3><div class="chips"><span>Data Structures &amp; Algorithms</span><span>Algorithms &amp; Complexity</span><span>Programming Languages &amp; Compilers</span><span>Discrete Mathematics</span><span>Databases</span></div></div>
+      <div><h3>Systems &amp; hardware</h3><div class="chips"><span>Computer Architecture</span><span>Computer Organization</span><span>Digital Logic</span><span>Operating Systems</span><span>Systems Programming</span><span>Parallel &amp; Distributed Systems</span><span>Signals &amp; Systems</span></div></div>
+      <div><h3>Networks, security &amp; software</h3><div class="chips"><span>Computer Networks + Lab</span><span>Cryptography &amp; Computer Security</span><span>Software Engineering</span><span>Web Engineering</span><span>Business Process Management</span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="contact band" id="contact"><div class="wrap">
+  <div><h2>Get in touch</h2><p>I'm looking for AI research and AI engineering roles from 2027, in Paphos or remote.</p></div>
+  <div class="clist">
+    <a href="mailto:YOUR-EMAIL@example.com">Email <small>YOUR-EMAIL@example.com</small></a>
+    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN">LinkedIn <small>linkedin.com/in/YOUR-LINKEDIN</small></a>
+    <a href="https://github.com/YOUR-USERNAME">GitHub <small>github.com/YOUR-USERNAME</small></a>
+  </div>
+</div></section>
+
+<footer>© 2026 Christina · Paphos, Cyprus</footer>
+</body>
+</html>
