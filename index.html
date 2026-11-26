@@ -79,6 +79,8 @@ figcaption b{color:var(--ink)}
 .stack span{font-size:13px;padding:3px 9px;border-radius:6px;background:var(--alt);color:var(--ink)}
 .more{font-weight:600;font-size:15px;color:var(--acc);text-decoration:none;align-self:flex-start;padding:4px 0}
 .more:hover{text-decoration:underline}
+.card ul{margin:0;padding-left:18px;color:var(--soft);font-size:15px}.card li{margin:3px 0}
+.links{display:flex;gap:18px;flex-wrap:wrap}.note{font-size:14px;color:var(--soft)}
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
 .skills>div{padding:18px 0;border-top:1px solid var(--line)}
@@ -176,37 +178,72 @@ footer{text-align:center;padding:24px 16px;color:var(--soft);font-size:14px}
 </div></section>
 
 <section class="band" id="projects"><div class="wrap">
-  <div class="head"><h2>Projects</h2><p>Research, a production website for a real client, and security work.</p></div>
+  <div class="head"><h2>Projects</h2><p>Research, a live e-commerce site for a real client, generative AI and security work.</p></div>
   <div class="grid">
     <article class="card feat">
       <div class="meta"><span>Bachelor's thesis</span><span class="live">In progress</span></div>
       <h3>Fine-tuning Gemma 3 1B for scientific TL;DR generation</h3>
-      <p>QLoRA fine-tuning of Gemma 3 1B to write one-sentence summaries of research papers (SciTLDR), comparing three input formats (AIC, EAP+AIC and Chat-Format) to find which trains the model best.</p>
-      <div class="stack"><span>Python</span><span>Unsloth</span><span>Hugging Face</span><span>QLoRA</span><span>Kaggle</span></div>
-      <a class="more" href="https://github.com/chrisanton17/gemma-scitldr-thesis">Repository →</a>
+      <p>Can a small 1-billion-parameter model learn to summarise research papers in one sentence? I fine-tune Gemma 3 1B with QLoRA on the SciTLDR dataset, changing one thing at a time and scoring outputs with ROUGE.</p>
+      <ul>
+        <li>Compares three input formats: AIC, EAP+AIC and Chat-Format</li>
+        <li>4-bit quantised base model with trainable LoRA adapters, so it runs on a free GPU</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>Unsloth</span><span>Hugging Face</span><span>QLoRA</span><span>ROUGE</span><span>Kaggle</span></div>
+      <span class="note">Repository public after grading</span>
     </article>
-    <article class="card">
-      <div class="meta"><span>Team of 5</span><span>Real client</span></div>
-      <h3>Full-stack website for a client</h3>
-      <p>Designed, built and delivered a website for a real client with a five-person team. I worked on both the front end and the back end and communicated with the client on requirements.</p>
-      <div class="stack"><span>PHP</span><span>Node.js</span><span>MySQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+    <article class="card feat">
+      <div class="meta"><span>Real client</span><span>Team of 5</span><span>Live site</span></div>
+      <h3>Creations by Athina: e-commerce for handmade plushies</h3>
+      <p>Online shop for a Cyprus-based maker of handmade crochet plushies, keyrings and character figures. Built for a real client as our Software Engineering project; I worked on both the front end and the back end and talked with the client about requirements.</p>
+      <ul>
+        <li>Product catalogue with filters by category, price and material, plus size options</li>
+        <li>Customer accounts, cart, wishlist and custom-order requests</li>
+        <li>Cookie consent, newsletter signup and full policy pages</li>
+      </ul>
+      <div class="stack"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Node.js</span><span>HTML</span><span>CSS</span></div>
+      <div class="links"><a class="more" href="https://creationsbyathina.com">Live site →</a><a class="more" href="https://github.com/chrisanton17/CEI_328-Project">Repository →</a></div>
     </article>
     <article class="card">
       <div class="meta"><span>Group project</span><span>Generative AI</span></div>
       <h3>BPM-GenAI: process mining with LLMs</h3>
-      <p>Combined process mining with large language models to analyse an insurance-claims event log and explain how the process actually runs.</p>
-      <div class="stack"><span>Python</span><span>LLMs</span><span>Process mining</span></div>
+      <p>Analysed an insurance-claims event log (100 cases, 500 events) with process mining and large language models, wrapped in a Streamlit app.</p>
+      <ul>
+        <li>Rule-based detection of 29 timestamp errors across 22 cases</li>
+        <li>Petri nets discovered with the Alpha, Heuristic and Inductive miners</li>
+        <li>LLM assistant that answers questions with tables and charts and summarises traces</li>
+        <li>Two LLMs (GPT-OSS-120B, Qwen) correct faulty timestamps, with accuracy, time and token cost compared</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>PM4Py</span><span>Streamlit</span><span>Groq API</span><span>Graphviz</span></div>
+      <a class="more" href="https://github.com/chrisanton17/bpm-genai">Repository →</a>
     </article>
     <article class="card">
       <div class="meta"><span>Group project</span><span>Security</span></div>
-      <h3>Vulnerable vs. secure web application</h3>
-      <p>Built a deliberately vulnerable web application and a hardened version, demonstrating common attacks and their defences.</p>
-      <div class="stack"><span>Web security</span><span>Cryptography</span></div>
+      <h3>Obscura: vulnerable vs. secure notes app</h3>
+      <p>Two versions of the same PHP notes app: one deliberately vulnerable to show real attacks, one hardened to show the defences. Both run in Docker with their own database.</p>
+      <ul>
+        <li>Attacks: SQL injection, stored XSS, mass assignment, path traversal and SSRF</li>
+        <li>Defences: parameterised PDO queries, safe Markdown rendering, field allow-lists, path validation and URL/IP blocking</li>
+        <li>Proof-of-concept exploit scripts in Python and JavaScript</li>
+      </ul>
+      <div class="stack"><span>PHP 8.3</span><span>MySQL 8.4</span><span>Docker</span><span>Python</span><span>Web security</span></div>
+      <a class="more" href="https://github.com/chrisanton17/Obscura">Repository →</a>
+    </article>
+    <article class="card">
+      <div class="meta"><span>Group project</span><span>Web engineering</span></div>
+      <h3>Recruitment management system</h3>
+      <p>Web system for managing Special Scientist recruitment at the Cyprus University of Technology, from registration to application tracking.</p>
+      <ul>
+        <li>Registration with validation, secure login and session-based access control</li>
+        <li>Role-based dashboards for admin, recruitment and enrolment</li>
+        <li>Bookmarkable keyword search; hashed passwords and prepared statements against SQL injection and XSS</li>
+      </ul>
+      <div class="stack"><span>PHP</span><span>MySQL</span><span>PDO</span><span>HTML</span><span>CSS</span></div>
+      <a class="more" href="https://github.com/chrisanton17/web-engineering-project">Repository →</a>
     </article>
     <article class="card">
       <div class="meta"><span>Paper study</span><span>Deep learning</span></div>
       <h3>Auto-Encoding Variational Bayes (VAE)</h3>
-      <p>Group summary and presentation of the original VAE paper, covering the reparameterisation trick and the evidence lower bound.</p>
+      <p>Group summary and presentation of the original VAE paper, explaining how the reparameterisation trick makes the evidence lower bound trainable with gradient descent.</p>
       <div class="stack"><span>Generative models</span><span>Presentation</span></div>
     </article>
   </div>
@@ -223,7 +260,7 @@ footer{text-align:center;padding:24px 16px;color:var(--soft);font-size:14px}
     <div><h3>Hardware</h3><div class="chips"><span>PC building</span><span>Component compatibility</span><span>3D printing</span><span>Digital logic</span></div></div>
     <div><h3>Tools</h3><div class="chips"><span>Git</span><span>GitHub</span><span>Linux</span><span>Terminal / shell</span><span>MATLAB</span><span>Kaggle</span></div></div>
     <div><h3>Professional</h3><div class="chips"><span>Client communication</span><span>Presentations</span><span>Leading project work</span><span>Teamwork</span></div></div>
-    <div><h3>Spoken languages</h3><div class="chips"><span>Greek</span><span>English</span><span>Italian(1 course)</span><span>Moldovan (Romanian)</span><span>Chinese (beginner)</span></div></div>
+    <div><h3>Spoken languages</h3><div class="chips"><span>Greek</span><span>English</span><span>Italian (1 course)</span><span>Moldovan (Romanian)</span><span>Chinese (beginner)</span></div></div>
   </div>
 </div></section>
 
@@ -248,8 +285,8 @@ footer{text-align:center;padding:24px 16px;color:var(--soft);font-size:14px}
 <section class="contact band" id="contact"><div class="wrap">
   <div><h2>Get in touch</h2><p>I'm looking for AI research and AI engineering roles from 2027, in Paphos or remote.</p></div>
   <div class="clist">
-    <a href="mailto:chrisanton1705@gmail.com">Email <small>YOUR-EMAIL@example.com</small></a>
-    <a href="https://www.linkedin.com/in/christina-antoniou-864573386">LinkedIn <small>linkedin.com/in/YOUR-LINKEDIN</small></a>
+    <a href="mailto:chrisanton1705@gmail.com">Email <small>chrisanton1705@gmail.com</small></a>
+    <a href="https://www.linkedin.com/in/christina-antoniou-864573386">LinkedIn <small>linkedin.com/in/christina-antoniou-864573386</small></a>
     <a href="https://github.com/chrisanton17">GitHub <small>github.com/chrisanton17</small></a>
   </div>
 </div></section>
